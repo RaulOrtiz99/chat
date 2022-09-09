@@ -1,4 +1,8 @@
+import 'package:chat/widgets/custom_input.dart';
 import 'package:flutter/material.dart';
+
+import '../../widgets/labels.dart';
+import '../../widgets/logo.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,9 +15,9 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _Logo(),
+              Logo(),
               _Form(),
-              _Labels(),
+              Labels(),
               Text(
                 "Terminos y condiciones de uso",
                 style: TextStyle(),
@@ -21,38 +25,6 @@ class LoginPage extends StatelessWidget {
             ],
           ),
         ));
-  }
-}
-
-class _Logo extends StatelessWidget {
-  const _Logo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 170,
-        margin: EdgeInsets.only(
-          top: 50,
-        ),
-        child: Column(
-          children: [
-            Image(
-              image: AssetImage('assets/tag-logo.png'),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Messenger",
-              style: TextStyle(
-                fontSize: 30,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
 
@@ -64,6 +36,9 @@ class _Form extends StatefulWidget {
 }
 
 class __FormState extends State<_Form> {
+  final emailCtrl = TextEditingController();
+  final passCtrl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -71,66 +46,20 @@ class __FormState extends State<_Form> {
       padding: EdgeInsets.symmetric(horizontal: 50),
       child: Column(
         children: [
-          TextField(),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    offset: Offset(0, 5),
-                    blurRadius: 5)
-              ],
-              color: Colors.white,
-            ),
-            child: TextField(
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              // obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: Icon(
-                  Icons.email_outlined,
-                ),
-                focusedBorder: InputBorder.none,
-              ),
-            ),
+          CustomInput(
+            icon: Icons.mail_lock_outlined,
+            placeHolder: 'Correo',
+            keyboardType: TextInputType.emailAddress,
+            textController: emailCtrl,
           ),
-          // ElevatedButton(
-          //   onPressed: () {},
-          //   child: Text('pressed'),
-          // ),
+          ElevatedButton(
+            onPressed: () {
+              print(emailCtrl.text);
+            },
+            child: Text("Prueba"),
+          )
         ],
       ),
-    );
-  }
-}
-
-class _Labels extends StatelessWidget {
-  const _Labels({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          "No tienes cuenta?",
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 15,
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          "Crea una ahora",
-          style: TextStyle(
-            color: Colors.blue[600],
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        )
-      ],
     );
   }
 }
