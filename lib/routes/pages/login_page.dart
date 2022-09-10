@@ -20,9 +20,15 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Logo(),
+                  Logo(
+                    titulo: 'Messenger',
+                  ),
                   _Form(),
-                  Labels(),
+                  Labels(
+                    ruta: 'register',
+                    titulo: 'No tienes cuenta?',
+                    subtitulo: 'Crea una ahora',
+                  ),
                   Text(
                     "Terminos y condiciones de uso",
                     style: TextStyle(),
@@ -60,7 +66,7 @@ class __FormState extends State<_Form> {
             textController: emailCtrl,
           ),
           CustomInput(
-            icon: Icons.mail_outline_outlined,
+            icon: Icons.lock_outline,
             placeHolder: 'Contraseña',
             keyboardType: TextInputType.emailAddress,
             textController: passCtrl,
