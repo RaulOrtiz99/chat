@@ -13,17 +13,23 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Color(0xffF2F2F2),
         body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Logo(),
-              _Form(),
-              Labels(),
-              Text(
-                "Terminos y condiciones de uso",
-                style: TextStyle(),
-              )
-            ],
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.9,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Logo(),
+                  _Form(),
+                  Labels(),
+                  Text(
+                    "Terminos y condiciones de uso",
+                    style: TextStyle(),
+                  )
+                ],
+              ),
+            ),
           ),
         ));
   }
@@ -42,34 +48,33 @@ class __FormState extends State<_Form> {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        margin: EdgeInsets.only(top: 40),
-        padding: EdgeInsets.symmetric(horizontal: 50),
-        child: Column(
-          children: [
-            CustomInput(
-              icon: Icons.mail_outline_outlined,
-              placeHolder: 'Correo',
-              keyboardType: TextInputType.emailAddress,
-              textController: emailCtrl,
-            ),
-            CustomInput(
-              icon: Icons.mail_outline_outlined,
-              placeHolder: 'Contraseña',
-              keyboardType: TextInputType.emailAddress,
-              textController: passCtrl,
-              isPassword: true,
-            ),
-            BotonAzul(
-              text: 'Ingrese',
-              onPressed: () {
-                print(emailCtrl.text);
-                print(passCtrl.text);
-              },
-            )
-          ],
-        ),
-      
+    return Container(
+      margin: EdgeInsets.only(top: 40),
+      padding: EdgeInsets.symmetric(horizontal: 50),
+      child: Column(
+        children: [
+          CustomInput(
+            icon: Icons.mail_outline_outlined,
+            placeHolder: 'Correo',
+            keyboardType: TextInputType.emailAddress,
+            textController: emailCtrl,
+          ),
+          CustomInput(
+            icon: Icons.mail_outline_outlined,
+            placeHolder: 'Contraseña',
+            keyboardType: TextInputType.emailAddress,
+            textController: passCtrl,
+            isPassword: true,
+          ),
+          BotonAzul(
+            text: 'Ingrese',
+            onPressed: () {
+              print(emailCtrl.text);
+              print(passCtrl.text);
+            },
+          )
+        ],
+      ),
     );
   }
 }
