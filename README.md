@@ -4,7 +4,9 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application. 
+
+Basically this application is a real-time chat where I will use mongodb and sockets for communication
 
 A few resources to get you started if this is your first Flutter project:
 
