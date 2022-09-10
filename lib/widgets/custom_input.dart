@@ -47,7 +47,7 @@ class CustomInput extends StatelessWidget {
           prefixIcon: Icon(this.icon),
           focusedBorder: InputBorder.none,
           border: InputBorder.none,
-          hintText: 'Email',
+          hintText: this.placeHolder,
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:chat/widgets/boton_azul.dart';
 import 'package:chat/widgets/custom_input.dart';
 import 'package:flutter/material.dart';
 
@@ -41,25 +42,34 @@ class __FormState extends State<_Form> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 40),
-      padding: EdgeInsets.symmetric(horizontal: 50),
-      child: Column(
-        children: [
-          CustomInput(
-            icon: Icons.mail_lock_outlined,
-            placeHolder: 'Correo',
-            keyboardType: TextInputType.emailAddress,
-            textController: emailCtrl,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              print(emailCtrl.text);
-            },
-            child: Text("Prueba"),
-          )
-        ],
-      ),
+    return  Container(
+        margin: EdgeInsets.only(top: 40),
+        padding: EdgeInsets.symmetric(horizontal: 50),
+        child: Column(
+          children: [
+            CustomInput(
+              icon: Icons.mail_outline_outlined,
+              placeHolder: 'Correo',
+              keyboardType: TextInputType.emailAddress,
+              textController: emailCtrl,
+            ),
+            CustomInput(
+              icon: Icons.mail_outline_outlined,
+              placeHolder: 'Contraseña',
+              keyboardType: TextInputType.emailAddress,
+              textController: passCtrl,
+              isPassword: true,
+            ),
+            BotonAzul(
+              text: 'Ingrese',
+              onPressed: () {
+                print(emailCtrl.text);
+                print(passCtrl.text);
+              },
+            )
+          ],
+        ),
+      
     );
   }
 }
